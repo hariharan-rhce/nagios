@@ -4,7 +4,7 @@ yum install nagios-plugins-perl
 
 read -p 'Domain name: ' host
 
-cd /usr/lib64/nagios/plugins/ |  wget https://raw.githubusercontent.com/hariharan-rhce/nagios/master/check_mem 
+cd /usr/lib64/nagios/plugins/ |  https://assets.nagios.com/downloads/nagiosxi/scripts/custom_check_mem 
 
 cd /usr/lib64/nagios/plugins/ |  wget https://raw.githubusercontent.com/hariharan-rhce/nagios/master/check_ssl_certificate
 
