@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install nagios-plugins-perl 
+yum install nagios-plugins-perl -y
 
 read -p 'Domain name: ' host
 
@@ -9,8 +9,11 @@ cd /usr/lib64/nagios/plugins/ | wget https://assets.nagios.com/downloads/nagiosx
 cd /usr/lib64/nagios/plugins/ |  wget https://raw.githubusercontent.com/hariharan-rhce/nagios/master/check_ssl_certificate
 
 cd /usr/lib64/nagios/plugins/ | mv /usr/lib64/nagios/plugins/custom_check_mem /usr/lib64/nagios/plugins/check_mem
+mv ./custom_check_mem /usr/lib64/nagios/plugins/check_mem
+mv ./check_ssl_certificate /usr/lib64/nagios/plugins/
+
 chmod 755 /usr/lib64/nagios/plugins/check_ssl_certificate
-chmod 755 /usr/lib64/nagios/plugins/custom_check_mem
+chmod 755 /usr/lib64/nagios/plugins/check_mem
 
 cat <<EOT >> /etc/nagios/nrpe.cfg
 command[check_ssl_certificate]=/usr/lib64/nagios/plugins/check_ssl_certificate -H $host -c 30 -w 60 -v
